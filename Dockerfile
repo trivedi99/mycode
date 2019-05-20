@@ -1,0 +1,3 @@
+FROM tomcat
+MAINTAINER Trivedi
+EXPOSE 8080
