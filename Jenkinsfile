@@ -1,20 +1,16 @@
 pipeline {
     agent any 
     stages {
-        stage('Build') {
-            steps {
-                echo 'Build From SCM!' 
-            }
+        stage('Clone') {
+            checkout scm
         }
- 	stage('Deply') {
-            steps {
-                echo 'Deploy From SCM!'
-            }
+ 	stage('Build Image') {
+            app = docker.build("tomcat")          
         }
-	stage('Release') {
-            steps {
-                echo 'Release From SCM!'
-            }
+	stage('Test Image') {
+            app.inside {
+                sh 'echo "Test Passed"'
         }   
+     }
    }
 }
