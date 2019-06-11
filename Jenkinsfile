@@ -1,10 +1,20 @@
 pipeline {
     agent any 
     stages {
-        stage('Stage 1') {
+        stage('Build') {
             steps {
-                echo 'Hello From SCM!' 
+                echo 'Build From SCM!' 
             }
         }
-    }
+ 	stage('Deply') {
+            steps {
+                echo 'Deploy From SCM!'
+            }
+        }
+	stage('Release') {
+            steps {
+                echo 'Release From SCM!'
+            }
+        }   
+   }
 }
